@@ -1,0 +1,18 @@
+[profile.release]
+codegen-units = 1
+lto = "fat"
+
+[package]
+name = "spsim"
+version = "0.1.0"
+edition = "2024"
+
+
+[lib]
+name = "spsim"
+crate-type = ["cdylib"]
+
+[dependencies]
+num-complex = "0.4.6"
+fxhash = "0.2.1"
+pyo3 = { version = "0.23.3", features = ["extension-module", "num-complex"] }

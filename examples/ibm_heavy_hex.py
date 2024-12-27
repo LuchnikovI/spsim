@@ -78,9 +78,7 @@ sim.add_gate([('Z', 111), ('Z', 122)], pi / 4)
 sim.add_gate([('Z', 108), ('Z', 112)], pi / 4)
 sim.add_gate([('Z', 112), ('Z', 126)], pi / 4)
 
-print(sim)
-
-dyn = list(map(lambda x: x.real, sim.execute([('Z', 62)], time_steps, threshold)))
+dyn = list(map(lambda x: x.real, sim.execute([('Z', 62)], time_steps, threshold, decay)))
 
 plt.plot(dyn, 'b')
 plt.xlabel("Time step")

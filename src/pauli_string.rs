@@ -2,6 +2,13 @@ use std::{error::Error, fmt::Display, ops::Mul};
 
 pub(super) const CHUNK_SIZE: usize = u64::BITS as usize;
 
+// https://eugene-babichenko.github.io/blog/2019/11/13/rust-popcount-intrinsics/
+
+#[cfg_attr(target_arch = "x86_64", target_feature(enable = "popcnt"))]
+unsafe fn count(a: u64) -> u32 {
+    a.count_ones()
+}
+
 // -------------------------------------------------------------------------------------
 
 #[derive(Debug, Clone, PartialEq, Eq)]

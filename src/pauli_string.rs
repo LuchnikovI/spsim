@@ -63,7 +63,7 @@ impl PauliChunk {
         let new_bitchunk2 = !self.bitchunk1 & self.bitchunk2 & other.bitchunk1 & !other.bitchunk2
             | self.bitchunk1 & self.bitchunk2 & !other.bitchunk1 & other.bitchunk2
             | self.bitchunk1 & !self.bitchunk2 & other.bitchunk1 & other.bitchunk2;
-        new_bitchunk1.count_ones() as i32 - new_bitchunk2.count_ones() as i32
+        unsafe { count(new_bitchunk1) as i32 - count(new_bitchunk2) as i32 }
     }
     #[inline(always)]
     fn average(&self) -> u8 {
@@ -75,7 +75,7 @@ impl PauliChunk {
     }
     #[inline(always)]
     fn hamming(&self) -> u32 {
-        (self.bitchunk1 ^ self.bitchunk2).count_ones()
+        unsafe { count(self.bitchunk1 ^ self.bitchunk2) }
     }
 }
 

@@ -14,3 +14,7 @@ classifiers = [
 authors = [
   { name = "Ilia Luchnikov", email = "ilia.luchnikov@tii.ae" }
 ]
+
+[tool.maturin]
+profile = "release"
+rustc-args = ["-C", "target-cpu=native"]

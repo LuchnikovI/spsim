@@ -72,4 +72,7 @@ impl<const N: usize> Observable<N> {
             }) {}
         }
     }
+    pub(super) fn norm(&self) -> f64 {
+        self.0.values().map(|v| v.abs().powi(2)).sum::<f64>().sqrt()
+    }
 }

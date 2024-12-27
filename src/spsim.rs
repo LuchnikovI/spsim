@@ -79,8 +79,9 @@ impl<const N: usize> SPSimTrait for SPSim<N> {
                 obs.apply_gate(gate, threshold, decay);
             }
             println!(
-                "layer_number: {layer}, pauli_strings_number: {}",
-                obs.size()
+                "layer_number: {layer}, pauli_strings_number: {}, observable_norm {}",
+                obs.size(),
+                obs.norm(),
             );
         }
         dynamics.push(obs.get_average());
